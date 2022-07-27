@@ -20,6 +20,12 @@
  */
 import { onMounted, ref, computed } from "vue"
 import { NAME_SPACE } from "@/common/data"
+// eslint-disable-next-line import/extensions
+import "element-plus/es/components/loading/style/css"
+// eslint-disable-next-line import/extensions
+import "element-plus/es/components/message/style/css"
+import fetchList from "@/models/fetch-list"
+import { ElLoading, ElMessage } from "element-plus"
 
 import zhCn from "element-plus/dist/locale/zh-cn.mjs"
 import en from "element-plus/dist/locale/en.mjs"
@@ -34,11 +40,23 @@ const toggle = () => {
 	language.value = language.value === "zh-cn" ? "en" : "zh-cn"
 }
 
-onMounted(() => {
+onMounted(async () => {
 	// global api
 	window.global_api = {
-		$message: {},
-		$loading: {}
+		$message: ElMessage,
+		$loading: ElLoading.service
+	}
+
+	// window.global_api.$loading({
+	// 	fullscreen: true,
+	// 	text: "loading..."
+	// })
+	// window.global_api.$message.success("success")
+
+	const result = await fetchList.exec({ include: "is_creator" }, true)
+
+	if (result) {
+		console.log(result)
 	}
 })
 
@@ -46,17 +64,9 @@ onMounted(() => {
 
 <style lang="less" scoped>
 .page-container {
-  background: #fff;
-  color: #203062;
   height: 100%;
-  display: flex;
-  flex-direction: column;
-
-  .ui-right-page {
-    display: flex;
-    flex: 1;
-    overflow: auto;
-  }
+  margin: 0;
+  min-height: 100%;
+  background-color: #f8f9fa;
 }
-
 </style>

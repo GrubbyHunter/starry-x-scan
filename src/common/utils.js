@@ -1,7 +1,6 @@
 import dayjs from "dayjs"
 import { ERROR_DATA } from "@/common/error-code"
 
-
 function serialize(jsonObj) {
 	let str = ""
 	if (_.isEmpty(jsonObj)) {
@@ -15,7 +14,6 @@ function serialize(jsonObj) {
 	}
 	return str
 }
-
 
 function unSerialize(jsonStr) {
 	let jsonObj = {}
@@ -32,7 +30,7 @@ function unSerialize(jsonStr) {
 }
 
 /**
- * @desc 
+ * @desc
  *
  * @param {*} key
  * @returns
@@ -60,7 +58,7 @@ function getQuery(key) {
 /**
  * @desc diff time
  *
- * @param {*} newDate  
+ * @param {*} newDate
  * @param {*} oldDate
  * @returns
  */
@@ -92,7 +90,7 @@ function getInstance(Host) {
 }
 
 /**
- * @desc 
+ * @desc
  *
  * @param {*} error
  */
@@ -115,7 +113,7 @@ function handleError(error, callback) {
 }
 
 export {
-	getProjectInfo, getLoginUser, getDiffDay, getQuery,
-	serialize, unSerialize, getInstance, getFullGroupPathById,
-	formatTime, handleError, _transformTree, preHandleTreeData
+	getDiffDay, getQuery,
+	serialize, unSerialize, getInstance,
+	formatTime, handleError
 }
