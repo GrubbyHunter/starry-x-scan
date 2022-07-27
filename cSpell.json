@@ -1,0 +1,21 @@
+{
+  "ignoreWords": [
+    "Titor",
+    "unplugin",
+    "popconfirm",
+    "VITE",
+    "vite",
+    "Vuex",
+    "stylelint",
+    "precommit",
+    "Hiragino",
+    "antialiased",
+    "happypack",
+    "echarts",
+    "_",
+    "dayjs",
+    "errcode",
+    "errmessage",
+    "userinfo"
+  ]
+}

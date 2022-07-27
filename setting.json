@@ -1,0 +1,54 @@
+{
+  "editor.fontFamily": "Consolas",
+  "editor.fontSize": 20,
+  "workbench.colorTheme": "One Dark (Sublime)",
+  "editor.occurrencesHighlight": false,
+  "editor.selectionHighlight": false,
+  "window.zoomLevel": 1,
+  "vetur.format.defaultFormatter.html": "js-beautify-html",
+  "vetur.format.defaultFormatter.js": "none",
+  "vetur.format.defaultFormatterOptions": {
+    "js-beautify-html": {
+      "wrap_attributes": "force"
+    },
+    "prettyhtml": {
+      "printWidth": 100
+    }
+  },
+  "files.associations": {
+    "*.vue": "vue"
+  },
+  "eslint.validate": [
+    "javascript",
+    {
+      "language": "vue",
+      "autoFix": true
+    }
+  ],
+  "psi-header.lang-config": [
+    {
+      "language": "*",
+      "begin": "/**"
+    }
+  ],
+  "psi-header.templates": [
+    {
+      "language": "*",
+      "template": [
+        "@file <<filename>>",
+        "@desc <<filename>>",
+        "@createTime <<dateformat('YYYY-MM-DD')>>",
+        "@author <<author>> <<<authoremail>>>"
+      ]
+    }
+  ],
+  "path-intellisense.mappings": {
+    "@": "${workspaceRoot}/src"
+  },
+  "editor.tabSize": 2,
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "eslint.format.enable": true
+}
