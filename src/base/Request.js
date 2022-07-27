@@ -3,14 +3,13 @@
  * @author John Titor
  */
 
+import axios from "axios"
+import Base from "./Base"
+import { handleError } from "@/common/utils"
+import Storage from "@/base/storages/Storage"
+
 import { AJAX_CACHE_TYPE, SUCCESS_CODE } from "@/common/data"
 import { APP_ERROR, ERROR_DATA, SUCCESS_DATA } from "@/common/error-code"
-import { getProjectInfo, handleError } from "@/common/utils"
-
-import Base from "./Base"
-import { CONST_LOADING } from "@/common/text"
-import Storage from "@/base/storages/Storage"
-import axios from "axios"
 
 const { CancelToken } = axios
 const { VITE_APP_PROTOCOL, VITE_APP_HOST, VITE_APP_PRE_PATH } = import.meta.env
@@ -77,59 +76,59 @@ const throwErr = (code, errmessage) => {
 	}
 
 	switch (code) {
-		// Business error reporting，Do not use the front-end error prompt
-		case SERVER_ERROR:
-			break
-		case WARNING_TIPS:
-			errMessage = APP_ERROR.WARNING_TIPS
-			break
-		case AUTHORITY_DENY:
-			errMessage = APP_ERROR.AUTHORITY_DENY
-			break
-		case QUERY_DATA_NOT_EXIST:
-			errMessage = APP_ERROR.QUERY_DATA_NOT_EXIST
-			break
-		case CONTAINS_DATA_ERROR:
-			errMessage = APP_ERROR.CONTAINS_DATA_ERROR
-			break
-		case PARAMS_ERROR:
-			errMessage = APP_ERROR.PARAMS_ERROR
-			break
-		case EXTRA_API_ERROR:
-			errMessage = APP_ERROR.EXTRA_API_ERROR
-			break
-		case STATUS_NOT_ALLOW:
-			errMessage = APP_ERROR.STATUS_NOT_ALLOW
-			break
-		case SEARCH_PARAMS_NULL:
-			errMessage = APP_ERROR.SEARCH_PARAMS_NULL
-			break
-		case DATA_NOT_ALLOW_EDIT:
-			errMessage = APP_ERROR.DATA_NOT_ALLOW_EDIT
-			break
-		case UPLOAD_FILE_FAIL:
-			errMessage = APP_ERROR.UPLOAD_FILE_FAIL
-			break
-		case TASK_EXIST:
-			errMessage = APP_ERROR.TASK_EXIST
-			break
-		case INVALID:
-			errMessage = APP_ERROR.INVALID
-			break
-		case ABORT:
-			errMessage = APP_ERROR.ABORT
-			break
-		case EXCEPTION_DB_ERROR:
-			errMessage = APP_ERROR.EXCEPTION_DB_ERROR
-			break
-		case EXCEPTION_DB_UPDATE:
-			errMessage = APP_ERROR.EXCEPTION_DB_UPDATE
-			break
-		case EXCEPTION_DB_DELETE:
-			errMessage = APP_ERROR.EXCEPTION_DB_DELETE
-			break
-		default:
-			break
+	// Business error reporting，Do not use the front-end error prompt
+	case SERVER_ERROR:
+		break
+	case WARNING_TIPS:
+		errMessage = APP_ERROR.WARNING_TIPS
+		break
+	case AUTHORITY_DENY:
+		errMessage = APP_ERROR.AUTHORITY_DENY
+		break
+	case QUERY_DATA_NOT_EXIST:
+		errMessage = APP_ERROR.QUERY_DATA_NOT_EXIST
+		break
+	case CONTAINS_DATA_ERROR:
+		errMessage = APP_ERROR.CONTAINS_DATA_ERROR
+		break
+	case PARAMS_ERROR:
+		errMessage = APP_ERROR.PARAMS_ERROR
+		break
+	case EXTRA_API_ERROR:
+		errMessage = APP_ERROR.EXTRA_API_ERROR
+		break
+	case STATUS_NOT_ALLOW:
+		errMessage = APP_ERROR.STATUS_NOT_ALLOW
+		break
+	case SEARCH_PARAMS_NULL:
+		errMessage = APP_ERROR.SEARCH_PARAMS_NULL
+		break
+	case DATA_NOT_ALLOW_EDIT:
+		errMessage = APP_ERROR.DATA_NOT_ALLOW_EDIT
+		break
+	case UPLOAD_FILE_FAIL:
+		errMessage = APP_ERROR.UPLOAD_FILE_FAIL
+		break
+	case TASK_EXIST:
+		errMessage = APP_ERROR.TASK_EXIST
+		break
+	case INVALID:
+		errMessage = APP_ERROR.INVALID
+		break
+	case ABORT:
+		errMessage = APP_ERROR.ABORT
+		break
+	case EXCEPTION_DB_ERROR:
+		errMessage = APP_ERROR.EXCEPTION_DB_ERROR
+		break
+	case EXCEPTION_DB_UPDATE:
+		errMessage = APP_ERROR.EXCEPTION_DB_UPDATE
+		break
+	case EXCEPTION_DB_DELETE:
+		errMessage = APP_ERROR.EXCEPTION_DB_DELETE
+		break
+	default:
+		break
 	}
 	return errMessage
 }
@@ -159,7 +158,6 @@ const reportError = (response) => {
 		return
 	}
 
-
 	// without report error code
 	if (code) {
 		let shortCode = `${code}`.substr(-3) // 取最后三位错误码
@@ -172,7 +170,6 @@ const reportError = (response) => {
 		}
 	}
 
-
 	if (window.reportError) {
 		// if (url && url.indexOf("trpc") > -1) {
 		window.reportError({
@@ -183,7 +180,6 @@ const reportError = (response) => {
 		// }
 	}
 }
-
 
 const catchError = (error) => {
 	if (window.aegis && error) {
@@ -308,12 +304,11 @@ export default class Request extends Base {
 	 *
 	 * @param {Object} params Request parameters
 	 * @param {boolean} loading Whether to use loading
-	 * @param {boolean} useCache 
+	 * @param {boolean} useCache
 	 * @returns
 	 * @memberof Request
 	 */
 	exec(params, loading, useCache) {
-		const { projectId, appId } = getProjectInfo()
 		const { timeout, format } = this
 
 		let url = ""
@@ -323,7 +318,8 @@ export default class Request extends Base {
 
 		if (_.isFunction(this.beforeExec)) {
 			// If it is an interface of other systems
-			// the parameters need to be compatible, and the response parameter needs to be compatible in the format
+			// the parameters need to be compatible, and the response
+			// parameter needs to be compatible in the format
 			this.beforeExec()
 		}
 
@@ -335,8 +331,6 @@ export default class Request extends Base {
 				+ HTTP_CONFIG.host
 				+ this.url
 		}
-
-		this.xZhiYanProjectId = projectId || ""
 		this.params = params || {}
 
 		// cache key，url + proj_id + uniqId
@@ -391,7 +385,7 @@ export default class Request extends Base {
 					})
 				}).finally(() => {
 					if (loading) {
-						instanceLoading.hide()
+						instanceLoading.close()
 					}
 				})
 		}
@@ -416,7 +410,7 @@ export default class Request extends Base {
 				})
 			}).finally(() => {
 				if (loading) {
-					instanceLoading.hide()
+					instanceLoading.close()
 				}
 			})
 	}

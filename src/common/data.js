@@ -37,7 +37,7 @@ const CONST_TIME = {
 
 const SUCCESS_CODE = 0
 const TASK_FETCH_PRE_PATH = "/api/v4"
-const NAME_SPACE = "stx"
+const NAME_SPACE = "el"
 export {
 	AJAX_CACHE_TYPE,
 	CONST_KEY,

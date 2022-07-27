@@ -1,10 +1,10 @@
-import { defineConfig, loadEnv } from "vite"
-
 import AutoImport from "unplugin-auto-import/vite"
 import Components from "unplugin-vue-components/vite"
 import { ElementPlusResolver } from "unplugin-vue-components/resolvers"
 import path from "path"
 import vue from "@vitejs/plugin-vue"
+
+import { defineConfig, loadEnv } from "vite"
 
 export const aliases = {
 	"@": path.resolve(__dirname, "./src")
@@ -17,9 +17,11 @@ export default ({ mode }) => {
 		server: {
 			port: 3001,
 			open: true,
+			https: true,
 			proxy: {
 				"^/api/v4/": {
 					target: "https://www.zhihu.com",
+					secure: false,
 					changeOrigin: true
 				}
 			}
@@ -27,12 +29,12 @@ export default ({ mode }) => {
 
 		plugins: [vue(),
 		//  Import on demand element-ui-plus
-		AutoImport({
-			resolvers: [ElementPlusResolver()]
-		}),
-		Components({
-			resolvers: [ElementPlusResolver()]
-		})
+			AutoImport({
+				resolvers: [ElementPlusResolver()]
+			}),
+			Components({
+				resolvers: [ElementPlusResolver()]
+			})
 		],
 		resolve: {
 			alias: aliases
