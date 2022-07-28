@@ -12,6 +12,7 @@
     "lint-staged": "lint-staged"
   },
   "dependencies": {
+    "@element-plus/icons-vue": "^2.0.6",
     "@vitejs/plugin-vue": "^2.3.3",
     "axios": "^0.27.2",
     "dayjs": "^1.11.3",

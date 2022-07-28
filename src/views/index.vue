@@ -30,7 +30,7 @@ import { ElLoading, ElMessage } from "element-plus"
 import zhCn from "element-plus/dist/locale/zh-cn.mjs"
 import en from "element-plus/dist/locale/en.mjs"
 
-import Header from "@/components/common/header.vue"
+import Header from "@/components/common/header/index.vue"
 import Footer from "@/components/common/footer.vue"
 
 const language = ref("zh-cn")

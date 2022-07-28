@@ -17,7 +17,7 @@ export default ({ mode }) => {
 		server: {
 			port: 3001,
 			open: true,
-			https: true,
+			// https: true,
 			proxy: {
 				"^/api/v4/": {
 					target: "https://www.zhihu.com",
