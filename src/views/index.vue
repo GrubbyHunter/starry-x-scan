@@ -53,11 +53,11 @@ onMounted(async () => {
 	// })
 	// window.global_api.$message.success("success")
 
-	const result = await fetchList.exec({ include: "is_creator" }, true)
+	// const result = await fetchList.exec({ include: "is_creator" }, true)
 
-	if (result) {
-		console.log(result)
-	}
+	// if (result) {
+	// 	console.log(result)
+	// }
 })
 
 </script>
