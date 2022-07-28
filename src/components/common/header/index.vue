@@ -11,7 +11,10 @@
           </div>
 
           <div>
-            <el-button class="mobile-button"></el-button>
+            <el-button class="mobile-button"
+              @click="changeExpand"
+              :icon="isExpand ? CloseBold : Fold"
+            ></el-button>
           </div>
 
           <div class="menu-container">
@@ -34,9 +37,12 @@
  * @file header.vue
  */
 import Search from "./search.vue"
+import { useMenuState } from "./state/menu"
+import { CloseBold, Fold } from "@element-plus/icons-vue"
 import MenuComponent from "./menu.vue"
 import LogoSvg from "@/assets/svg/logo-scan.svg"
 
+const { isExpand, changeExpand } = useMenuState()
 </script>
 
 <style lang="less" scoped>
@@ -48,7 +54,6 @@ import LogoSvg from "@/assets/svg/logo-scan.svg"
   z-index: 1001;
 
   .header-section {
-    height: 9.6rem;
     border-bottom: 1px solid @border-color;
     position: relative;
     z-index: 1;
@@ -65,6 +70,10 @@ import LogoSvg from "@/assets/svg/logo-scan.svg"
       .header-menu {
         padding: 0.25rem;
         height: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
 
         .w-lg-auto {
           width: auto;
@@ -87,7 +96,7 @@ import LogoSvg from "@/assets/svg/logo-scan.svg"
         }
 
         .mobile-button {
-          display: none;
+          display: flex;
         }
 
         .menu-container {
@@ -98,18 +107,10 @@ import LogoSvg from "@/assets/svg/logo-scan.svg"
 
           .menu-component {
             flex: 1;
-            height: 50%;
-            order: 2;
-
-            > ul {
-              height: 100%;
-            }
           }
 
           .search-component {
             flex: 1;
-            height: 50%;
-            order: 1;
             display: flex;
             align-items: center;
           }
@@ -125,17 +126,26 @@ import LogoSvg from "@/assets/svg/logo-scan.svg"
 
 @media (min-width: 576px) {
   .header-container {
-    max-width: 100%;
+    max-width: 100% !important;
 
     .header-menu {
-      display: flex;
+      flex-wrap: nowrap !important;
+    }
+
+    .mobile-button {
+      display: none !important;
     }
   }
 
   .menu-container {
     .menu-component {
-      display: flex !important;
-      flex-basis: auto;
+      display: block !important;
+      flex-basis: auto !important;
+      order: 2;
+    }
+
+    .search-component {
+      order: 1;
     }
   }
 
@@ -145,19 +155,12 @@ import LogoSvg from "@/assets/svg/logo-scan.svg"
 }
 
 @media (min-width: 576px) and (max-width: 1200px) {
-  .header-container {
-    padding-left: 4.5rem;
-    padding-right: 4.5rem;
-  }
 
-  .w-60 {
-    width: 60% !important;
-  }
 }
 
 @media (min-width: 1400px) {
   .header-container {
-    max-width: 1400px;
+    max-width: 1400px !important;
   }
 
   .w-60 {

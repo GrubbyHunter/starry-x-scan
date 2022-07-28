@@ -2,18 +2,17 @@
   <el-input
     v-model="input3"
     size="large"
-    placeholder="Please input"
+    placeholder="Please input your contract"
     class="input-filter w-60"
   >
     <template #prepend>
-      <el-select size="large" v-model="select" placeholder="Select" style="width: 115px">
-        <el-option label="Restaurant" value="1" />
-        <el-option label="Order No." value="2" />
-        <el-option label="Tel" value="3" />
+      <el-select class="head-filter" size="large" v-model="select" placeholder="Select">
+        <el-option label="Contract" value="1" />
+        <el-option label="NFT" value="2" />
       </el-select>
     </template>
     <template #append>
-      <el-button size="large" :icon="Search" />
+      <el-button size="large" :icon="Search" type="primary" />
     </template>
   </el-input>
 </template>
@@ -30,6 +29,13 @@ const select = ref("")
 
 <style lang="less" scoped>
 .input-filter {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+
+  .head-filter {
+    width: 9rem;
+  }
+
   &.w-60 {
     width: 100%;
   }
@@ -38,6 +44,11 @@ const select = ref("")
 @media (min-width: 576px) {
   .input-filter {
     margin-left: auto !important;
+    margin-bottom: 0 !important;
+
+    .head-filter {
+      width: 12rem !important;
+    }
   }
 
   .w-60 {
@@ -46,22 +57,10 @@ const select = ref("")
 }
 
 @media (min-width: 576px) and (max-width: 1200px) {
-  .input-filter {
-    margin-left: auto !important;
-  }
 
-  .w-60 {
-    width: 60% !important;
-  }
 }
 
 @media (min-width: 1400px) {
-  .input-filter {
-    margin-left: auto !important;
-  }
 
-  .w-60 {
-    width: 60% !important;
-  }
 }
 </style>
