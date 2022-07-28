@@ -37,7 +37,11 @@ const CONST_TIME = {
 
 const SUCCESS_CODE = 0
 const TASK_FETCH_PRE_PATH = "/api/v4"
-const NAME_SPACE = "el"
+const NAME_SPACE = "stx"
+const LANG_TYPE = {
+	zh: "zh",
+	en: "en"
+}
 export {
 	AJAX_CACHE_TYPE,
 	CONST_KEY,
@@ -45,5 +49,6 @@ export {
 	CONST_TIME,
 	SUCCESS_CODE,
 	TASK_FETCH_PRE_PATH,
-	NAME_SPACE
+	NAME_SPACE,
+	LANG_TYPE
 }

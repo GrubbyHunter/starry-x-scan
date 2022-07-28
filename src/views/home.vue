@@ -12,7 +12,7 @@
 <script setup>
 
 </script>
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .starry-home {
   flex: 1;
   width: 100%;

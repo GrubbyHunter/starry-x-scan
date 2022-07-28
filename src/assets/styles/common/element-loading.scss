@@ -1,0 +1,124 @@
+:root {
+	--stx-loading-spinner-size: 42px;
+	--stx-loading-fullscreen-spinner-size: 50px
+}
+
+.stx-loading-parent--relative {
+	position: relative!important
+}
+
+.stx-loading-parent--hidden {
+	overflow: hidden!important
+}
+
+.stx-loading-mask {
+	position: absolute;
+	z-index: 2000;
+	background-color: var(--stx-mask-color);
+	margin: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	transition: opacity var(--stx-transition-duration)
+}
+
+.stx-loading-mask.is-fullscreen {
+	position: fixed
+}
+
+.stx-loading-mask.is-fullscreen .stx-loading-spinner {
+	margin-top: calc((0px - var(--stx-loading-fullscreen-spinner-size))/ 2)
+}
+
+.stx-loading-mask.is-fullscreen .stx-loading-spinner .circular {
+	height: var(--stx-loading-fullscreen-spinner-size);
+	width: var(--stx-loading-fullscreen-spinner-size)
+}
+
+.stx-loading-spinner {
+	top: 50%;
+	margin-top: calc((0px - var(--stx-loading-spinner-size))/ 2);
+	width: 100%;
+	text-align: center;
+	position: absolute
+}
+
+.stx-loading-spinner .stx-loading-text {
+	color: var(--stx-color-primary);
+	margin: 3px 0;
+	font-size: 14px
+}
+
+.stx-loading-spinner .circular {
+	display: inline;
+	height: var(--stx-loading-spinner-size);
+	width: var(--stx-loading-spinner-size);
+	-webkit-animation: loading-rotate 2s linear infinite;
+	animation: loading-rotate 2s linear infinite
+}
+
+.stx-loading-spinner .path {
+	-webkit-animation: loading-dash 1.5s ease-in-out infinite;
+	animation: loading-dash 1.5s ease-in-out infinite;
+	stroke-dasharray: 90,150;
+	stroke-dashoffset: 0;
+	stroke-width: 2;
+	stroke: var(--stx-color-primary);
+	stroke-linecap: round
+}
+
+.stx-loading-spinner i {
+	color: var(--stx-color-primary)
+}
+
+.stx-loading-fade-enter-from,.stx-loading-fade-leave-to {
+	opacity: 0
+}
+
+@-webkit-keyframes loading-rotate {
+	100% {
+		transform: rotate(360deg)
+	}
+}
+
+@keyframes loading-rotate {
+	100% {
+		transform: rotate(360deg)
+	}
+}
+
+@-webkit-keyframes loading-dash {
+	0% {
+		stroke-dasharray: 1,200;
+		stroke-dashoffset: 0
+	}
+
+	50% {
+		stroke-dasharray: 90,150;
+		stroke-dashoffset: -40px
+	}
+
+	100% {
+		stroke-dasharray: 90,150;
+		stroke-dashoffset: -120px
+	}
+}
+
+@keyframes loading-dash {
+	0% {
+		stroke-dasharray: 1,200;
+		stroke-dashoffset: 0
+	}
+
+	50% {
+		stroke-dasharray: 90,150;
+		stroke-dashoffset: -40px
+	}
+
+	100% {
+		stroke-dasharray: 90,150;
+		stroke-dashoffset: -120px
+	}
+}
+

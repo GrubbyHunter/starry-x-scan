@@ -18,11 +18,8 @@
  * @author John Titor
  */
 import { onMounted, ref, computed } from "vue"
-import { NAME_SPACE } from "@/common/data"
-// eslint-disable-next-line import/extensions
-import "element-plus/es/components/loading/style/css"
-// eslint-disable-next-line import/extensions
-import "element-plus/es/components/message/style/css"
+import { useRoute } from "vue-router"
+import { NAME_SPACE, LANG_TYPE } from "@/common/data"
 import fetchList from "@/models/fetch-list"
 import { ElLoading, ElMessage } from "element-plus"
 
@@ -32,12 +29,9 @@ import en from "element-plus/dist/locale/en.mjs"
 import Header from "@/components/common/header/index.vue"
 import Footer from "@/components/common/footer.vue"
 
-const language = ref("zh-cn")
-const locale = computed(() => (language.value === "zh-cn" ? zhCn : en))
+const route = useRoute()
 
-const toggle = () => {
-	language.value = language.value === "zh-cn" ? "en" : "zh-cn"
-}
+const locale = computed(() => (route.params?.lang === LANG_TYPE.zh ? zhCn : en))
 
 onMounted(async () => {
 	// global api
@@ -61,11 +55,11 @@ onMounted(async () => {
 
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .page-container {
-  height: calc(~"100vh - 5rem");
+  height: calc(100vh - 5rem);
   margin: 0;
-  min-height: calc(~"100vh - 5rem");
+  min-height: calc(100vh - 5rem);
   background-color: #f8f9fa;
 }
 </style>

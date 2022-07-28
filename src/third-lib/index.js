@@ -3,7 +3,7 @@
  * @desc third-lib
  */
 import bindLodash from "./bind-lodash"
-
+import bindI18n from "./bind-i18n"
 /**
 	*
 	* @desc
@@ -11,6 +11,7 @@ import bindLodash from "./bind-lodash"
 	*/
 function init(app, router) {
 	bindLodash()
+	bindI18n(app)
 }
 
 export { init }

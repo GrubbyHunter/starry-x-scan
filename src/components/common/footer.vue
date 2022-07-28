@@ -11,7 +11,7 @@
 
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .page-footer {
   background-color: #21325b !important;
   text-align: center;

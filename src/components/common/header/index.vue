@@ -45,7 +45,7 @@ import LogoSvg from "@/assets/svg/logo-scan.svg"
 const { isExpand, changeExpand } = useMenuState()
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .page-header {
   position: relative;
   right: 0;
@@ -54,7 +54,7 @@ const { isExpand, changeExpand } = useMenuState()
   z-index: 1001;
 
   .header-section {
-    border-bottom: 1px solid @border-color;
+    // border-bottom: 1px solid $border-color;
     position: relative;
     z-index: 1;
     background-color: #fff;

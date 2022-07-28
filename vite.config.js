@@ -1,6 +1,7 @@
 import AutoImport from "unplugin-auto-import/vite"
 import Components from "unplugin-vue-components/vite"
 import { ElementPlusResolver } from "unplugin-vue-components/resolvers"
+
 import path from "path"
 import vue from "@vitejs/plugin-vue"
 
@@ -33,7 +34,9 @@ export default ({ mode }) => {
 				resolvers: [ElementPlusResolver()]
 			}),
 			Components({
-				resolvers: [ElementPlusResolver()]
+				resolvers: [ElementPlusResolver({
+					importStyle: "sass"
+				})]
 			})
 		],
 		resolve: {
@@ -41,12 +44,9 @@ export default ({ mode }) => {
 		},
 		css: {
 			preprocessorOptions: {
-				less: {
-					// import less global var
-					modifyVars: {
-						hack: `true; @import (reference) "${path.resolve(__dirname, "./src/assets/styles/common/vars.less")}";`
-					},
-					javascriptEnabled: true
+				// import scss global var
+				scss: {
+					additionalData: "@use \"@/assets/styles/common/element-plus.scss\" as *;"
 				}
 			}
 		}

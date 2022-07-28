@@ -2,7 +2,7 @@
   <el-input
     v-model="input3"
     size="large"
-    placeholder="Please input your contract"
+    :placeholder="$t('header.input.placeholder')"
     class="input-filter w-60"
   >
     <template #prepend>
@@ -27,7 +27,7 @@ const input3 = ref("")
 const select = ref("")
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .input-filter {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;

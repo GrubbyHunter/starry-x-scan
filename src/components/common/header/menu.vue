@@ -29,7 +29,7 @@ const handleSelect = (key, keyPath) => {
 	console.log(key, keyPath)
 }
 </script>
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .menu-select-list {
   margin: 0;
   display: none;
