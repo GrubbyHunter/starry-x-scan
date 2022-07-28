@@ -6,9 +6,8 @@
       <div class="starry-main">
         <router-view></router-view>
       </div>
-
-      <Footer></Footer>
     </div>
+		<Footer></Footer>
   </el-config-provider>
 </template>
 
@@ -64,9 +63,9 @@ onMounted(async () => {
 
 <style lang="less" scoped>
 .page-container {
-  height: 100%;
+  height: calc(~"100vh - 5rem");
   margin: 0;
-  min-height: 100%;
+  min-height: calc(~"100vh - 5rem");
   background-color: #f8f9fa;
 }
 </style>

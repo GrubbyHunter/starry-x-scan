@@ -1,6 +1,6 @@
 <template>
   <div class="page-footer">
-
+    Starry-X-Scan © 2022 (B1)  |  Donate
   </div>
 </template>
 
@@ -13,8 +13,10 @@
 
 <style lang="less" scoped>
 .page-footer {
-  width: 100%;
-  height: 100%;
-  display: flex;
+  background-color: #21325b !important;
+  text-align: center;
+  color:white;
+  height: 5rem;
+  padding: 1.6rem;
 }
 </style>
